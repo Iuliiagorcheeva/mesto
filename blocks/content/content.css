@@ -1,0 +1,12 @@
+.content{
+  max-width: 1280px;
+  min-width: 300px;
+  margin: auto;
+  padding: 0 15% 0;
+}
+
+@media screen and (max-width: 320px){
+  .content{
+    padding: 0 9% 0;
+  }
+}
