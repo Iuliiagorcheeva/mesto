@@ -1,0 +1,7 @@
+.elements__card{
+  width: 282px;
+  height: 361px;
+  display: block;
+  border-radius: 10px;
+  background-color: white;
+}
