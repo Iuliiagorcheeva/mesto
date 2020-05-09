@@ -6,6 +6,9 @@
   box-sizing: border-box;
   display: flex;
   cursor: pointer;
+  background-image: url(../../../image/edit.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .profile__edit-button:hover{
   opacity: .5;

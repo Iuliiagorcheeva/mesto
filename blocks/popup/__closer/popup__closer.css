@@ -1,12 +1,17 @@
 .popup__closer{
   position: absolute;
-  top: -33px;
-  right: -33px;
+  top: -40px;
+  right: -40px;
   cursor: pointer;
   color: #fff;
   width: 40px;
   height: 40px;
-  cursor: pointer;
+  background: black;
+  border: none;
+  font-size: 40px;
+  background-image: url(../../../image/CloseIcon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .popup__closer:hover{
   opacity: .5;
