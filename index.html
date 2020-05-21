@@ -86,6 +86,17 @@
       <button type="submit" class="popup__button" value="submit">Сохранить</button>
     </form>
   </section>
+  <!-- Всплывающее окно добавления карточек -->
+  <section class="popup popup_add">
+    <form class="popup__container" id="add-data" name="add-form" method="POST" action="#">
+      <button type="button" class="popup__closer" aria-label="Закрыть"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <input type="text" name="name" id="form-name" class="popup__form" placeholder="Название" required>
+      <input type="text" name="description" id="form-description" class="popup__form" placeholder="Ссылка на картинку" required>
+      <button type="submit" class="popup__button" value="submit">Сохранить</button>
+    </form>
+  </section>
+
   <script src="./script/script.js"></script>
 </body>
 
