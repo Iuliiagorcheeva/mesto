@@ -27,50 +27,7 @@
       </div>
       <button type="button" class="profile__add-button" aria-label="Добавить"></button>
     </section>
-    <section class="elements">
-      <div class="elements__card">
-        <img src="./image/elem_karachaevsk.jpg" alt="Старинный замок в Карачаевске" class="elements__image">
-        <div class="elements__info">
-
-          <h2 class="elements__title">Карачаевск</h2>
-          <button type="button" class="elements__like" aria-label="Нравится"></button>
-        </div>
-      </div>
-      <div class="elements__card">
-        <img src="./image/elem_elbrus.jpg" alt="Вид на гору на закате" class="elements__image">
-        <div class="elements__info">
-          <h2 class="elements__title">Эльбрус</h2>
-          <button type="button" class="elements__like" aria-label="Нравится"></button>
-        </div>
-      </div>
-      <div class="elements__card">
-        <img src="./image/elem_dombai.jpg" alt="Заснеженные горы и лес" class="elements__image">
-        <div class="elements__info">
-          <h2 class="elements__title">Домбаи</h2>
-          <button type="button" class="elements__like" aria-label="Нравится"></button>
-        </div>
-      </div>
-      <div class="elements__card">
-        <img src="./image/elem_elbrus.jpg" alt="Вид на гору на закате" class="elements__image">
-        <div class="elements__info">
-          <h2 class="elements__title">Эльбрус</h2>
-          <button type="button" class="elements__like" aria-label="Нравится"></button>
-        </div>
-      </div>
-      <div class="elements__card">
-        <img src="./image/elem_dombai.jpg" alt="Заснеженные горы и лес" class="elements__image">
-        <div class="elements__info">
-          <h2 class="elements__title">Домбаи</h2>
-          <button type="button" class="elements__like" aria-label="Нравится"></button>
-        </div>
-      </div>
-      <div class="elements__card">
-        <img src="./image/elem_karachaevsk.jpg" alt="Старинный замок в Карачаевске" class="elements__image">
-        <div class="elements__info">
-          <h2 class="elements__title">Карачаевск</h2>
-          <button type="button" class="elements__like" aria-label="Нравится"></button>
-        </div>
-      </div>
+     <section class="elements">
     </section>
   </main>
   <footer class="footer">
@@ -79,23 +36,33 @@
   <!-- Всплывающее окно изменения данных пользователя -->
   <section class="popup">
     <form class="popup__container" id="edit-data" name="edit-form" method="POST" action="#">
-      <button type="button" class="popup__closer" aria-label="Закрыть"></button>
+      <button type="button" class="popup__closer" id="closer-edit" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <input type="text" name="name" id="form-name" class="popup__form" placeholder="ФИО" required>
       <input type="text" name="description" id="form-description" class="popup__form" placeholder="Описание" required>
-      <button type="submit" class="popup__button" value="submit">Сохранить</button>
+      <button type="submit" id="edit-submit" class="popup__button" value="submit">Сохранить</button>
     </form>
   </section>
   <!-- Всплывающее окно добавления карточек -->
   <section class="popup popup_add">
     <form class="popup__container" id="add-data" name="add-form" method="POST" action="#">
-      <button type="button" class="popup__closer" aria-label="Закрыть"></button>
+      <button type="button" class="popup__closer" id="closer-add" aria-label="Закрыть"></button>
       <h2 class="popup__title">Новое место</h2>
-      <input type="text" name="name" id="form-name" class="popup__form" placeholder="Название" required>
-      <input type="text" name="description" id="form-description" class="popup__form" placeholder="Ссылка на картинку" required>
-      <button type="submit" class="popup__button" value="submit">Сохранить</button>
+      <input type="text" name="title" id="form-title" class="popup__form" placeholder="Название" required>
+      <input type="url" name="link" id="form-link" class="popup__form" placeholder="Ссылка на картинку" required>
+      <button type="submit" id="add-submit"class="popup__button" value="submit">Сохранить</button>
     </form>
   </section>
+  <!-- Шаблон карточек -->
+  <template id="template">
+    <div class="elements__card">
+      <img src="" alt="Изображение" class="elements__image">
+      <div class="elements__info">
+        <h2 class="elements__title"></h2>
+        <button type="button" class="elements__like" aria-label="Нравится"></button>
+      </div>
+    </div>
+  </template>
 
   <script src="./script/script.js"></script>
 </body>
