@@ -22,7 +22,7 @@
 .popup-closer:focus{
   outline: none;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 768px){
   .popup-closer{
     width: 20px;
     height: 20px;
