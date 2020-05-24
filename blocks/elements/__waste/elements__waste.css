@@ -1,0 +1,20 @@
+.elements__waste{
+  background-image: url(../../../image/waste.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  width: 18px;
+  height: 19px;
+  background-color: transparent;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+.elements__waste:hover{
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.2s linear;
+}
+.elements__waste:focus{
+  outline: none;
+}

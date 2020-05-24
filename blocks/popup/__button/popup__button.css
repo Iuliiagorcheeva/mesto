@@ -16,3 +16,6 @@
   background: rgba(0, 0, 0, 0.8);
   transition: .3s linear;
 }
+.popup__button:focus{
+  outline: none;
+}

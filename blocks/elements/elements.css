@@ -4,6 +4,7 @@
 @import url(./__like/elements__like.css);
 @import url(./__like/_liked/elements__like_liked.css);
 @import url(./__title/elements__title.css);
+@import url(./__waste/elements__waste.css);
 .elements{
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
