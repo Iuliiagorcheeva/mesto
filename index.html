@@ -35,29 +35,29 @@
   </footer>
   <!-- Всплывающее окно изменения данных пользователя -->
   <section class="popup">
-    <form class="popup__container" id="edit-data" name="edit-form" method="POST" action="#">
-      <button type="button" class="popup-closer" id="closer-edit" aria-label="Закрыть"></button>
+    <form class="popup__container popup__container-edit" name="edit-form" method="POST" action="#">
+      <button type="button" class="popup__edit-closer popup-closer" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" name="name" id="form-name" class="popup__form" placeholder="ФИО" required>
-      <input type="text" name="description" id="form-description" class="popup__form" placeholder="Описание" required>
+      <input type="text" name="name" id="form-name" class="popup__form popup__form-name" placeholder="ФИО" required>
+      <input type="text" name="description" id="form-description" class="popup__form popup__form-description" placeholder="Описание" required>
       <button type="submit" id="edit-submit" class="popup__button" value="submit">Сохранить</button>
     </form>
   </section>
   
   <!-- Всплывающее окно добавления карточек -->
   <section class="popup popup_add">
-    <form class="popup__container" id="add-data" name="add-form" method="POST" action="#">
-      <button type="button" class="popup-closer" id="closer-add" aria-label="Закрыть"></button>
+    <form class="popup__container popup__container-add" name="add-form" method="POST" action="#">
+      <button type="button" class="popup__add-closer popup-closer" aria-label="Закрыть"></button>
       <h2 class="popup__title">Новое место</h2>
-      <input type="text" name="title" id="form-title" class="popup__form" placeholder="Название" required>
-      <input type="url" name="link" id="form-link" class="popup__form" placeholder="Ссылка на картинку" required>
-      <button type="submit" id="add-submit"class="popup__button" value="submit">Сохранить</button>
+      <input type="text" name="title" id="form-title" class="popup__form popup__form-title" placeholder="Название" required>
+      <input type="url" name="link" id="form-link" class="popup__form popup__form-link" placeholder="Ссылка на картинку" required>
+      <button type="submit" id="add-submit" class="popup__button" value="submit">Сохранить</button>
     </form>
   </section>
   <!-- Всплывающее окно просмотра карточек -->
   <section class="popup-card">
     <figure class="popup-card__info">
-      <button type="button" id="closer-card" class="popup-closer"></button>
+      <button type="button" class="popup-card__closer popup-closer"></button>
       <img class="popup-card__image" src="" alt="Изображение">
       <figcaption class="popup-card__caption"></figcaption>
     </figure>
