@@ -90,6 +90,7 @@ function addCard(item) {
   elementsCardCopy.querySelector('.elements__image').src = item.link;
   elementsCardCopy.querySelector('.elements__title').textContent = item.name;
   elements.prepend(elementsCardCopy);
+  
   // Лайки
   elementsCardCopy.querySelector('.elements__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('elements__like_liked');

@@ -35,22 +35,26 @@
   </footer>
   <!-- Всплывающее окно изменения данных пользователя -->
   <section class="popup">
-    <form class="popup__container popup__container-edit" name="edit-form" method="POST" action="#">
+    <form class="popup__container popup__container-edit" name="edit-form" method="POST" action="#" novalidate>
       <button type="button" class="popup__edit-closer popup-closer" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" name="name" id="form-name" class="popup__form popup__form-name" placeholder="ФИО" required>
-      <input type="text" name="description" id="form-description" class="popup__form popup__form-description" placeholder="Описание" required>
+      <input type="text" name="name" id="form-name" class="popup__form popup__form-name" minlength="2" maxlength="40" pattern="[A-Za-zА-ЯЁа-яё -]{2,}" placeholder="ФИО" required>
+      <span id="form-name-error" class="popup__span-error"></span>
+      <input type="text" name="description" id="form-description" class="popup__form popup__form-description" minlength="2" maxlength="200" placeholder="Описание" required>
+      <span id="form-description-error" class="popup__span-error"></span>
       <button type="submit" id="edit-submit" class="popup__button" value="submit">Сохранить</button>
     </form>
   </section>
   
   <!-- Всплывающее окно добавления карточек -->
   <section class="popup popup_add">
-    <form class="popup__container popup__container-add" name="add-form" method="POST" action="#">
+    <form class="popup__container popup__container-add" name="add-form" method="POST" action="#" novalidate>
       <button type="button" class="popup__add-closer popup-closer" aria-label="Закрыть"></button>
       <h2 class="popup__title">Новое место</h2>
-      <input type="text" name="title" id="form-title" class="popup__form popup__form-title" placeholder="Название" required>
+      <input type="text" name="title" id="form-title" class="popup__form popup__form-title" placeholder="Название" required minlength="1" maxlength="30">
+      <span id="form-title-error" class="popup__span-error"></span>
       <input type="url" name="link" id="form-link" class="popup__form popup__form-link" placeholder="Ссылка на картинку" required>
+      <span id="form-link-error" class="popup__span-error"></span>
       <button type="submit" id="add-submit" class="popup__button" value="submit">Сохранить</button>
     </form>
   </section>
@@ -74,7 +78,8 @@
     </div>
   </template>
 
-  <script src="./script/script.js"></script>
+  <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
