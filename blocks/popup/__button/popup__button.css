@@ -10,11 +10,12 @@
   text-align: center;
   color: white;
   margin-top: 48px;
-  cursor: pointer;
+  
 }
 .popup__button:hover{
   background: rgba(0, 0, 0, 0.8);
   transition: .3s linear;
+  cursor: pointer;
 }
 .popup__button:focus{
   outline: none;

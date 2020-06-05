@@ -2,5 +2,10 @@
   border: 1px solid #E5E5E5;
   background: #ffffff;
   color: #E5E5E5;
-  cursor: none;
+}
+
+.popup__button_disabled:hover{
+  background: #ffffff;
+  transition: none;
+  cursor: initial;
 }

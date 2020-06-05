@@ -34,7 +34,7 @@ const popupCloserCard = document.querySelector('.popup-card__closer');
 const popup = document.querySelector('.popup');
 const popupAdd = document.querySelector('.popup_add');
 const popupCard = document.querySelector('.popup-card');
-
+const popupCardOverlay = document.querySelector('.popup-card__overlay');
 
 let formNamePopup = document.querySelector('.popup__form-name');
 let formDescrPopup = document.querySelector('.popup__form-description');
@@ -142,4 +142,4 @@ addButton.addEventListener('click', openingPopupAdd);
 popupCloser.addEventListener('click', openingPopup);
 popupCloserAdd.addEventListener('click', openingPopupAdd);
 popupCloserCard.addEventListener('click', openingPopupCard);
-
+popupCardOverlay.addEventListener('click', openingPopupCard);

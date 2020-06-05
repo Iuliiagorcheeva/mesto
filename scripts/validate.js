@@ -1,9 +1,3 @@
-// Вынесем все необходимые элементы формы в константы
-// const formElement = document.querySelector('.popup__container');
-// const formInput = formElement.querySelector('.popup__form');
-// const formError = formElement.querySelector(`#${formInput.id}-error`);
-
-
 // Функция, которая добавляет класс с ошибкой, выводит сообщение с ошибкой
 const showInputError = (formElement, formInput, errorMessage) => {
   const errorElement = formElement.querySelector(`#${formInput.id}-error`);
@@ -32,14 +26,35 @@ const isValid = (formElement, formInput) => {
     hideInputError(formElement, formInput);
   }
 };
+
+// Функция, которая принимает массив невалидных полей
+const hasInvalidInput = (inputList) => {
+  return inputList.some((formInput) => {
+    return !formInput.validity.valid;
+  })
+};
+
+// Функция принимает массив полей ввода и элемент кнопки, состояние которой нужно менять
+const toggleButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add('popup__button_disabled');
+    buttonElement.setAttribute('disabled', 'disabled');
+  } else {
+    buttonElement.classList.remove('popup__button_disabled');
+    buttonElement.removeAttribute('disabled');
+  }
+};
+
 // Функция, которая добавит полям нужные обработчики событий
 const setEventListeners = (formElement) => {
-  // Находим все поля внутри формы
   const inputList = Array.from(formElement.querySelectorAll('.popup__form'));
-
+  const buttonElement = formElement.querySelector('.popup__button');
+  toggleButtonState(inputList, buttonElement);
+  
   inputList.forEach((formInput) => {
     formInput.addEventListener('input', () => {
       isValid(formElement, formInput)
+      toggleButtonState(inputList, buttonElement);
     });
   });
 };
@@ -58,9 +73,3 @@ const enableValidation = () => {
 
 enableValidation();
 
-// // Слушатели событий
-// formElement.addEventListener('submit', function (evt) {
-//   evt.preventDefault();
-// });
-// // Вызовем функцию isValid на каждый ввод символа
-// formInput.addEventListener('input', isValid);
