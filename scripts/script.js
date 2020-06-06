@@ -34,7 +34,9 @@ const popupCloserCard = document.querySelector('.popup-card__closer');
 const popup = document.querySelector('.popup');
 const popupAdd = document.querySelector('.popup_add');
 const popupCard = document.querySelector('.popup-card');
-const popupCardOverlay = document.querySelector('.popup-card__overlay');
+const popupEditOverlay = document.querySelector('.popup-overlay-edit');
+const popupAddOverlay = document.querySelector('.popup-overlay-add')
+const popupCardOverlay = document.querySelector('.popup-overlay-card');
 
 let formNamePopup = document.querySelector('.popup__form-name');
 let formDescrPopup = document.querySelector('.popup__form-description');
@@ -46,6 +48,7 @@ let formElenent = document.querySelector('.popup__container-edit');
 let formElenentAdd = document.querySelector('.popup__container-add');
 let popupCardImage = document.querySelector('.popup-card__image');
 let popupCardCaption = document.querySelector('.popup-card__caption');
+
 
 
 // Объявляем функцию открытия и закрытия попапа изменения данных пользователя
@@ -80,6 +83,15 @@ function openingPopupCard() {
   popupCard.classList.toggle('popup-opened');
 }
 
+// закрытие попапа по Esc
+function pressEsc(evt) {
+  if (evt.key === 'Escape') {
+    popup.classList.remove('popup-opened');
+    popupAdd.classList.remove('popup-opened');
+    popupCard.classList.remove('popup-opened');
+  }
+}
+
 //Функция создания карточек
 function addCard(item) {
   let elements = document.querySelector('.elements');
@@ -90,7 +102,7 @@ function addCard(item) {
   elementsCardCopy.querySelector('.elements__image').src = item.link;
   elementsCardCopy.querySelector('.elements__title').textContent = item.name;
   elements.prepend(elementsCardCopy);
-  
+
   // Лайки
   elementsCardCopy.querySelector('.elements__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('elements__like_liked');
@@ -124,7 +136,6 @@ function addItem() {
   addCard(arrayItem);
 }
 
-
 // Добавление новых карточек из формы
 function formSubmitAddHandler(evt) {
   evt.preventDefault();
@@ -142,4 +153,11 @@ addButton.addEventListener('click', openingPopupAdd);
 popupCloser.addEventListener('click', openingPopup);
 popupCloserAdd.addEventListener('click', openingPopupAdd);
 popupCloserCard.addEventListener('click', openingPopupCard);
+popupEditOverlay.addEventListener('click', openingPopup);
+popupAddOverlay.addEventListener('click', openingPopupAdd);
 popupCardOverlay.addEventListener('click', openingPopupCard);
+
+
+document.addEventListener('keydown', pressEsc);
+document.removeEventListener('keyup', pressEsc)
+

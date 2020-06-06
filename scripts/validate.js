@@ -14,7 +14,7 @@ const hideInputError = (formElement, formInput) => {
 
   formInput.classList.remove('popup__form_error');
 
-  errorElement.classList.remove('form__input-error_active');
+  errorElement.classList.remove('popup__span-error_active');
   errorElement.textContent = '';
 };
 
@@ -71,5 +71,12 @@ const enableValidation = () => {
   });
 };
 
-enableValidation();
+enableValidation({
+  formSelector: '.popup__container',
+  inputSelector: '.popup__form',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__form_error',
+  errorClass: 'popup__span-error_active'
+});
 
