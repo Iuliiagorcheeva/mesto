@@ -19,7 +19,14 @@ const hideInputError = (formElement, formInput) => {
 };
 
 // Функция, которая проверяет валидность поля
-const isValid = (formElement, formInput) => {
+const isValid = (formInput) => {
+  if (!formInput.validity.valid) {
+    return !formInput.validity.valid;
+  }
+};
+
+// Функция, которая скрывает и показывает ошибку
+const showHideError = (formElement, formInput) => {
   if (!formInput.validity.valid) {
     showInputError(formElement, formInput, formInput.validationMessage);
   } else {
@@ -27,11 +34,12 @@ const isValid = (formElement, formInput) => {
   }
 };
 
+
 // Функция, которая принимает массив невалидных полей
 const hasInvalidInput = (inputList) => {
   return inputList.some((formInput) => {
     return !formInput.validity.valid;
-  })
+  });
 };
 
 // Функция принимает массив полей ввода и элемент кнопки, состояние которой нужно менять
@@ -50,10 +58,10 @@ const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll('.popup__form'));
   const buttonElement = formElement.querySelector('.popup__button');
   toggleButtonState(inputList, buttonElement);
-  
+
   inputList.forEach((formInput) => {
     formInput.addEventListener('input', () => {
-      isValid(formElement, formInput)
+      showHideError(formElement, formInput);
       toggleButtonState(inputList, buttonElement);
     });
   });
@@ -70,13 +78,4 @@ const enableValidation = () => {
     setEventListeners(formElement);
   });
 };
-
-enableValidation({
-  formSelector: '.popup__container',
-  inputSelector: '.popup__form',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__form_error',
-  errorClass: 'popup__span-error_active'
-});
 
