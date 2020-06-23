@@ -8,8 +8,10 @@ const addButton = document.querySelector('.profile__add-button');
 const popupCloser = document.querySelector('.popup__edit-closer');
 const popupCloserAdd = document.querySelector('.popup__add-closer');
 const popupCloserCard = document.querySelector('.popup-card__closer');
-const popup = document.querySelector('.popup');
-const popupAdd = document.querySelector('.popup_add');
+
+
+const popupProfile = document.querySelector('.popup-profile');
+const popupAdd = document.querySelector('.popup-add');
 const popupCard = document.querySelector('.popup-card');
 const popupEditOverlay = document.querySelector('.popup-overlay-edit');
 const popupAddOverlay = document.querySelector('.popup-overlay-add');
@@ -23,8 +25,8 @@ const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 const formElenent = document.querySelector('.popup__container-edit');
 const formElenentAdd = document.querySelector('.popup__container-add');
-const popupCardImage = document.querySelector('.popup-card__image');
-const popupCardCaption = document.querySelector('.popup-card__caption');
+export const popupCardImage = document.querySelector('.popup-card__image');
+export const popupCardCaption = document.querySelector('.popup-card__caption');
 const elements = document.querySelector('.elements');
 const setting = {
   inputSelector: '.popup__form',
@@ -34,49 +36,49 @@ const setting = {
   errorClass: 'popup__span-error_active'
 };
 
-
-
-
 // Фунуция закрытие попапа по Esc
 function escapePressedHandler(evt) {
   if (evt.key === 'Escape') {
-    popup.classList.remove('popup-opened');
-    popupAdd.classList.remove('popup-opened');
-    popupCard.classList.remove('popup-opened');
+    const moduleWindow = document.querySelector('.popup-opened');
+    moduleWindow.classList.toggle('popup-opened');
     removeEventListener('keydown', escapePressedHandler);
   }
 }
-// Объявляем функцию открытия и закрытия попапа изменения данных пользователя
-function openOrClosePopup() {
+// Функция открытия и закрытия попапов
+function openClosePopup(popup) {
   popup.classList.toggle('popup-opened');
+  addEventListener('keydown', escapePressedHandler);
+  const reset = new FormValidator(setting, popup).resetValidation();
+}
 
+//Функция открытия и закрытия попапа изменения данных пользователя
+function openingPopupProfile() {
+  openClosePopup(popupProfile);
   // Заполнение полей формы данными со страницы пользователя
-  if (popup.classList.contains('popup-opened')) {
+  if (popupProfile.classList.contains('popup-opened')) {
     formNamePopup.value = profileName.textContent;
     formDescrPopup.value = profileDescription.textContent;
   }
-  addEventListener('keydown', escapePressedHandler);
 }
 // Функция отправки данных из полей формы на страницу
 function formSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = formNamePopup.value;
   profileDescription.textContent = formDescrPopup.value;
-  openOrClosePopup();
+  openClosePopup(popupProfile);
 }
-
 // Функция открытия и закрытия попапа добавления карточек
 function openingPopupAdd() {
-  popupAdd.classList.toggle('popup-opened');
+  openClosePopup(popupAdd);
   formLinkPopup.value = "";
   formTitlePopup.value = "";
-  addEventListener('keydown', escapePressedHandler);
+  const buttonAdd = popupAdd.querySelector('.popup__button');
+  buttonAdd.classList.add('popup__button_disabled');
+  buttonAdd.setAttribute('disabled', 'disabled');
 }
-
 // Функция открытия и закрытия попапа с просмотром фотографий
-function openingPopupCard() {
-  popupCard.classList.toggle('popup-opened');
-  addEventListener('keydown', escapePressedHandler);
+export function openingPopupCard() {
+  openClosePopup(popupCard);
 }
 // Перебор массива, в котором к каждому элементу применяем  создание КАРТОЧКИ
 initialCards.forEach((item) => {
@@ -113,14 +115,12 @@ forms.forEach((item) => {
 formElenent.addEventListener('submit', formSubmitHandler);
 formElenentAdd.addEventListener('submit', formSubmitAddHandler);
 
-editButton.addEventListener('click', openOrClosePopup);
+editButton.addEventListener('click', openingPopupProfile);
 addButton.addEventListener('click', openingPopupAdd);
 
-popupCloser.addEventListener('click', openOrClosePopup);
+popupCloser.addEventListener('click', openingPopupProfile);
 popupCloserAdd.addEventListener('click', openingPopupAdd);
 popupCloserCard.addEventListener('click', openingPopupCard);
-popupEditOverlay.addEventListener('click', openOrClosePopup);
+popupEditOverlay.addEventListener('click', openingPopupProfile);
 popupAddOverlay.addEventListener('click', openingPopupAdd);
 popupCardOverlay.addEventListener('click', openingPopupCard);
-
-

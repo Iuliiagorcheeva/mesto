@@ -65,6 +65,13 @@ export class FormValidator {
     });
     this._setEventListeners(this._inputSelector);
   }
+  // Скрытие ошибки валидации 
+  resetValidation() {
+    const inputList = Array.from(this._formSelector.querySelectorAll(this._inputSelector));
+    inputList.forEach((formInput) => {
+      this._hideInputError(formInput);
+    })
+  }
 }
 
 
