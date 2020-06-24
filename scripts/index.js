@@ -27,6 +27,7 @@ const formElenent = document.querySelector('.popup__container-edit');
 const formElenentAdd = document.querySelector('.popup__container-add');
 export const popupCardImage = document.querySelector('.popup-card__image');
 export const popupCardCaption = document.querySelector('.popup-card__caption');
+const buttonAdd = popupAdd.querySelector('.popup__button');
 const elements = document.querySelector('.elements');
 const setting = {
   inputSelector: '.popup__form',
@@ -72,14 +73,14 @@ function openingPopupAdd() {
   openClosePopup(popupAdd);
   formLinkPopup.value = "";
   formTitlePopup.value = "";
-  const buttonAdd = popupAdd.querySelector('.popup__button');
-  buttonAdd.classList.add('popup__button_disabled');
-  buttonAdd.setAttribute('disabled', 'disabled');
+  const invisibleButton = new FormValidator(setting, popupAdd).invisibleButton();
+
 }
 // Функция открытия и закрытия попапа с просмотром фотографий
 export function openingPopupCard() {
   openClosePopup(popupCard);
 }
+
 // Перебор массива, в котором к каждому элементу применяем  создание КАРТОЧКИ
 initialCards.forEach((item) => {
   const card = new Card(item, '#template');

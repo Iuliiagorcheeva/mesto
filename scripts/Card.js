@@ -1,5 +1,4 @@
 import { openingPopupCard, popupCardImage, popupCardCaption } from './index.js';
-import { initialCards } from './initialCards.js';
 export class Card {
   // Конструктор наполнения карточки
   constructor(data, cardSelector) {
@@ -22,9 +21,9 @@ export class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-
-    this._element.querySelector('.elements__image').src = this._image;
-    this._element.querySelector('.elements__image').alt = 'Загрузка изображения ' + this._title;
+    const image = this._element.querySelector('.elements__image');
+    image.src = this._image;
+    image.alt = 'Загрузка изображения ' + this._title;
     this._element.querySelector('.elements__title').textContent = this._title;
 
     return this._element;
@@ -53,8 +52,9 @@ export class Card {
   // Метод просмотра карточки
   _handleShow() {
     openingPopupCard();
-    popupCardImage.alt = this._element.querySelector('.elements__image').alt;
-    popupCardImage.src = this._element.querySelector('.elements__image').src;
+    const image = this._element.querySelector('.elements__image');
+    popupCardImage.alt = image.alt;
+    popupCardImage.src = image.src;
     popupCardCaption.textContent = this._element.querySelector('.elements__title').textContent;
   }
 }

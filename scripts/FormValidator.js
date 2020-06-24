@@ -35,15 +35,24 @@ export class FormValidator {
       return !item.validity.valid;
     });
   }
+  // Методы изменения состояния кнопки формы
+  invisibleButton(){
+    const buttonElement = this._formSelector.querySelector(this._submitButtonSelector);
+    buttonElement.classList.add(this._inactiveButtonClass);
+    buttonElement.setAttribute('disabled', 'disabled');
+  }
+  visibleButton(){
+    const buttonElement = this._formSelector.querySelector(this._submitButtonSelector);
+    buttonElement.classList.remove(this._inactiveButtonClass);
+    buttonElement.removeAttribute('disabled');
+  }
+
   //  Метод, который принимает массив полей ввода и элемент кнопки, состояние которой нужно менять
   _toggleButtonState(inputList) {
-    const buttonElement = this._formSelector.querySelector(this._submitButtonSelector);
     if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add(this._inactiveButtonClass);
-      buttonElement.setAttribute('disabled', 'disabled');
+     this.invisibleButton()
     } else {
-      buttonElement.classList.remove(this._inactiveButtonClass);
-      buttonElement.removeAttribute('disabled');
+     this.visibleButton()
     }
   }
   // метод добавления слушателя всем полям формы
