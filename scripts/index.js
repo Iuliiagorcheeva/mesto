@@ -23,11 +23,11 @@ const formLinkPopup = document.querySelector('.popup__form-link');
 const formTitlePopup = document.querySelector('.popup__form-title');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
-const formElenent = document.querySelector('.popup__container-edit');
-const formElenentAdd = document.querySelector('.popup__container-add');
+const formElementEdit = document.querySelector('.popup__container-edit');
+const formElementAdd = document.querySelector('.popup__container-add');
 export const popupCardImage = document.querySelector('.popup-card__image');
 export const popupCardCaption = document.querySelector('.popup-card__caption');
-const buttonAdd = popupAdd.querySelector('.popup__button');
+const buttonAdd = popupAdd.querySelector('.popup__button'); 
 const elements = document.querySelector('.elements');
 const setting = {
   inputSelector: '.popup__form',
@@ -36,7 +36,10 @@ const setting = {
   inputErrorClass: 'popup__form_error',
   errorClass: 'popup__span-error_active'
 };
-
+const formValidatorEdit = new FormValidator(setting, formElementEdit);
+formValidatorEdit.enableValidation(); // Валидность формы изменения данных профиля
+const formValidatorAdd = new FormValidator(setting, formElementAdd);
+formValidatorAdd.enableValidation();  // Валидность формы добавления карточки
 // Фунуция закрытие попапа по Esc
 function escapePressedHandler(evt) {
   if (evt.key === 'Escape') {
@@ -49,7 +52,9 @@ function escapePressedHandler(evt) {
 function openClosePopup(popup) {
   popup.classList.toggle('popup-opened');
   addEventListener('keydown', escapePressedHandler);
-  const reset = new FormValidator(setting, popup).resetValidation();
+  // Сброс валидации
+  formValidatorAdd.resetValidation();
+  formValidatorEdit.resetValidation();
 }
 
 //Функция открытия и закрытия попапа изменения данных пользователя
@@ -73,7 +78,8 @@ function openingPopupAdd() {
   openClosePopup(popupAdd);
   formLinkPopup.value = "";
   formTitlePopup.value = "";
-  const invisibleButton = new FormValidator(setting, popupAdd).invisibleButton();
+  // Сброс состояния активности кнопки
+  formValidatorAdd.invisibleButton();
 
 }
 // Функция открытия и закрытия попапа с просмотром фотографий
@@ -106,15 +112,10 @@ function formSubmitAddHandler(evt) {
   addItem();
   openingPopupAdd();
 }
-// Проверка валидности форм
-const forms = Array.from(document.querySelectorAll('.popup__container'));
-forms.forEach((item) => {
-  const formValidator = new FormValidator(setting, item).enableValidation();
-})
 
 // Слушатели 
-formElenent.addEventListener('submit', formSubmitHandler);
-formElenentAdd.addEventListener('submit', formSubmitAddHandler);
+formElementEdit.addEventListener('submit', formSubmitHandler);
+formElementAdd.addEventListener('submit', formSubmitAddHandler);
 
 editButton.addEventListener('click', openingPopupProfile);
 addButton.addEventListener('click', openingPopupAdd);
