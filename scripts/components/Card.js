@@ -1,9 +1,11 @@
-import { openingPopupCard, popupCardImage, popupCardCaption } from './index.js';
-export class Card {
+// import { openingPopupCard, popupCardImage, popupCardCaption } from './index.js';
+export default class Card {
   // Конструктор наполнения карточки
-  constructor(data, cardSelector) {
+  constructor({data, handleCardClick}, cardSelector) {
     this._title = data.name;
     this._image = data.link;
+    this._handleCardClick = handleCardClick;
+
     this._cardSelector = cardSelector;
 
   }
@@ -36,8 +38,10 @@ export class Card {
     this._element.querySelector('.elements__waste').addEventListener('click', () => {
       this._handleRemove();
     });
-    this._element.querySelector('.elements__image').addEventListener('click', () => {
-      this._handleShow();
+    const img = this._element.querySelector('.elements__image');
+    const cap = this._element.querySelector('.elements__title');
+    img.addEventListener('click', () => {
+      this._handleCardClick(img, cap);
     });
 
   }
@@ -45,16 +49,9 @@ export class Card {
   _handleLike() {
     this._element.querySelector('.elements__like').classList.toggle('elements__like_liked');
   }
-  // Метод удаления карточки. Не совсем поняла про зануление карточки после удаления. Если ли какая-то информация в интернете по этому поводу, сама не нашла((
+  // Метод удаления карточки
   _handleRemove() {
     this._element.remove();
   }
-  // Метод просмотра карточки
-  _handleShow() {
-    openingPopupCard();
-    const image = this._element.querySelector('.elements__image');
-    popupCardImage.alt = image.alt;
-    popupCardImage.src = image.src;
-    popupCardCaption.textContent = this._element.querySelector('.elements__title').textContent;
-  }
+  
 }
