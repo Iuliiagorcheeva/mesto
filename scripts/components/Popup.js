@@ -2,10 +2,8 @@ export default class Popup {
   constructor(selectorPopup) {
     this._selectorPopup = selectorPopup;
   }
-  open(button) {
-    button.addEventListener('click', () => {
-      this._selectorPopup.classList.add('popup-opened');
-    });
+  open() {
+    this._selectorPopup.classList.add('popup-opened');
   }
   close() {
     this._selectorPopup.classList.remove('popup-opened');

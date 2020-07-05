@@ -1,4 +1,6 @@
 // Импорты классов и констант
+
+import './index.css';
 import FormValidator from '../scripts/components/FormValidator.js';
 import Card from '../scripts/components/Card.js';
 import { initialCards } from '../scripts/array/initialCards.js';
@@ -69,7 +71,6 @@ const popupEdit = new PopupWithForm({
   }
 })
 popupEdit.setEventListeners();
-popupEdit.open(editButton);
 popupEdit.close();
 
 // Форма добавления новых карточек
@@ -99,20 +100,22 @@ const popupAdds = new PopupWithForm({
     elements.prepend(cardElement);
   }
 })
-popupAdds.open(addButton);
+
 popupAdds.setEventListeners();
 popupAdds.close();
 
 
 // СЛУШАТЕЛИ
 editButton.addEventListener('click', () => {
+  popupEdit.open();
   formValidatorEdit.resetValidation();
-  formValidatorEdit.invisibleButton();
+  formValidatorEdit.visibleButton();
   userInfo.getUserInfo(formNamePopup, formDescrPopup);
 })
 
 
 addButton.addEventListener('click', () => {
   formValidatorAdd.resetValidation();
+  popupAdds.open();
   formValidatorAdd.invisibleButton();
 })

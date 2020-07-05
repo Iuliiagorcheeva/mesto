@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./src/index.css">
+ 
   <title>Место</title>
 </head>
 
 <body class="root">
 
   <header class="header">
-    <img src="./images/logo.svg" alt="Логотип Место" class="header__logo">
+    <img src="../images/logo.svg" alt="Логотип Место" class="header__logo">
   </header>
   <main class="content">
     <section class="profile">
       <div class="profile__avatar">
-        <img src="./images/ive-custo.jpg" alt="Жак Ив Кусто улыбается" class="profile__image">
+        <img src="../images/ive-custo.jpg" alt="Жак Ив Кусто улыбается" class="profile__image">
         <div class="profile__info">
           <div class="profile__position">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -69,7 +69,7 @@
     <div class="popup-overlay popup-overlay-card"></div>
     <figure class="popup-card__info">
       <button type="button" class="popup-card__closer popup-closer"></button>
-      <img class="popup-card__image" src="" alt="">
+      <img class="popup-card__image">
       <figcaption class="popup-card__caption"></figcaption>
     </figure>
   </section>
@@ -77,14 +77,14 @@
   <template id="template">
     <div class="elements__card">
       <button type="button" class="elements__waste" aria-label="Удалить"></button>
-      <img src="" alt="" class="elements__image">
+      <img class="elements__image">
       <div class="elements__info">
         <h2 class="elements__title"></h2>
         <button type="button" class="elements__like" aria-label="Нравится"></button>
       </div>
     </div>
   </template>
-  <script type="module" src="./src/index.js"></script>
+ 
 </body>
 
 </html>
