@@ -1,4 +1,3 @@
-// import { openingPopupCard, popupCardImage, popupCardCaption } from './index.js';
 export default class Card {
   // Конструктор наполнения карточки
   constructor({data, handleCardClick}, cardSelector) {
@@ -25,7 +24,7 @@ export default class Card {
     this._setEventListeners();
     const image = this._element.querySelector('.elements__image');
     image.src = this._image;
-    image.alt = 'Загрузка изображения ' + this._title;
+    image.alt = `Загрузка изображения ${this._title}`;
     this._element.querySelector('.elements__title').textContent = this._title;
 
     return this._element;
@@ -52,6 +51,7 @@ export default class Card {
   // Метод удаления карточки
   _handleRemove() {
     this._element.remove();
+    this._element = null;
   }
   
 }
